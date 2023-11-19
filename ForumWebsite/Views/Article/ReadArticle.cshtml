@@ -1,0 +1,11 @@
+﻿@{
+	ViewData["Title"] = "Статья";
+
+}
+@model Article;
+
+<div class="text-center container">
+		<h1>@Model.Title</h1>
+		<h3>от @Model.Author</h3>
+		<div>@Html.Raw(Model.Content)</div>
+</div>

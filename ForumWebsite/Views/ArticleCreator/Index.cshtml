@@ -1,0 +1,58 @@
+﻿@{
+	ViewData["Title"] = "Articles";
+
+}
+@model Article;
+
+<div class="text-center">
+	<h1 class="display-4">Welcome</h1>
+	<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+	<p>@ViewBag.Message</p>
+
+	<form method="POST" asp-action="CreateArticle">
+
+		<div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+
+		<!-- title input -->
+
+		<div class="form-outline mb-4">
+			<label class="form-label" asp-for="Title"></label>
+			<div>
+				<input asp-for="Title" class="form-control" />
+				<span asp-validation-for="Title" class="text-danger"></span>
+			</div>
+		</div>
+
+
+		<div class="form-outline mb-4">
+			<label class="form-label" asp-for="Author"></label>
+			<div>
+				<input asp-for="Author" class="form-control" />
+				<span asp-validation-for="Author" class="text-danger"></span>
+			</div>
+		</div>
+
+		<!-- body input -->
+
+		<div class="form-outline mb-4">
+			<label class="form-label" asp-for="Content"></label>
+			<div>
+				<textarea asp-for="Content" class="form-control" id="article"></textarea>
+				<span asp-validation-for="Content" class="text-danger"></span>
+			</div>
+		</div>
+		<input type="Submit" class="btn btn-primary" value="Create" />
+	</form>
+
+	<div>@ViewBag.Message</div>
+</div>
+@section Scripts{
+	<script>
+		tinymce.init({
+			selector: '#article',
+			toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
+				'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
+				'forecolor backcolor emoticons | help',
+		});
+	</script>
+}
